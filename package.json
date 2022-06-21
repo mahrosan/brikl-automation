@@ -1,0 +1,26 @@
+{
+  "name": "brikl-test-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahrosan/brikl-test-automation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mahrosan/brikl-test-automation/issues"
+  },
+  "homepage": "https://github.com/mahrosan/brikl-test-automation#readme",
+  "dependencies": {
+    "cypress": "^10.1.0"
+  },
+  "devDependencies": {
+    "cypress-xpath": "^1.6.2"
+  }
+}
