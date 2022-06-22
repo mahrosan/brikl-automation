@@ -50,7 +50,7 @@ describe('Design a Cup', () => {
         productDesign.uploadImage()
         // productDesign.verifyUploadPage()
         productDesign.clickUpload()
-        productDesign.checkImageUpload()
+        // productDesign.checkImageUpload()
         productDesign.clickPlaceImage()
         productDesign.clickOnCanvas()
         productDesign.clickOnPlacedImage()
