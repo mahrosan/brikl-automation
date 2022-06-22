@@ -1,7 +1,9 @@
+
+
 require('cypress-xpath')
 
 const pageIdentification = '[data-cy=product-name]'
-
+const colorOptions= ['COLORZONE-1', 'COLORZONE-2']
 class ProductDesign {
 
     checkPageContent()
@@ -37,6 +39,22 @@ class ProductDesign {
     {
         cy.get('[data-index=3]').click()
         cy.get('[data-index=3]',{timeout:5000}).invoke('attr','aria-selected').should('eq','true')
+    }
+
+    verifyIndexThree()
+    {
+        cy.xpath('//*[@id="tabs-6--tabpanel-3"]/div/div[1]/p').should('have.text','Add a color')
+    }
+
+    verifyColorzoneOptions()
+    {
+        var concatedOptions ='Select option'
+        for (var i = 0; i < colorOptions.length; i++) {
+            concatedOptions=concatedOptions+colorOptions[i]
+        }
+        cy.get('[data-cy=studio-color-fill-selector]')
+        .should('have.text',concatedOptions)
+
     }
 }
 
