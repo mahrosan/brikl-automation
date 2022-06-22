@@ -36,6 +36,8 @@ class ProductSelection {
         // Checking Data loads Process
         cy.xpath('//*[@id="__next"]/div/div').should('have.text','Loading...Loading the design assets. Please wait...Powered by')
     }
+
+    
 }
 
 export default ProductSelection

@@ -8,6 +8,8 @@ describe('Design a Cup', () => {
     })
     const productSelection = new ProductSelection();
     const productDesign = new ProductDesign()
+    const colorOptions= ['COLORZONE-1', 'COLORZONE-2']
+    const color = {'red':'[data-cy=color-index-15]','orange':'[data-cy=color-index-17]'}
 
     var product = 'Coffee Mug'
 
@@ -20,13 +22,30 @@ describe('Design a Cup', () => {
         productSelection.verifyAndClickBtn()
     })
 
-    it('Visit the Product Design Page', () => {
+    it('Change Product Color', () => {
         productDesign.checkPageContent()
         productDesign.verifyProductName(product)
         productDesign.clickOnDesignBtn()
 
         productDesign.verifyIndexThree()
-        productDesign.verifyColorzoneOptions()
+
+        // Selection option of the dropdown in verified in this section
+        productDesign.verifyColorzoneOptions(colorOptions)
+        cy.wait(3000)
+        // First color option is worked on
+        productDesign.selectColorOption(colorOptions[0])
+        productDesign.changeColorOption(color['red'])
+        // Second color option is worked on
+        productDesign.selectColorOption(colorOptions[1])
+        productDesign.changeColorOption(color['orange'])
+        cy.wait(500)
+        productDesign.clickIndexThreeDone()
+    })
+
+
+
+    it('Adds Image to product', () => {
+ 
     })
 
 });

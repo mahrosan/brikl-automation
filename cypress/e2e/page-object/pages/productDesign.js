@@ -3,7 +3,7 @@
 require('cypress-xpath')
 
 const pageIdentification = '[data-cy=product-name]'
-const colorOptions= ['COLORZONE-1', 'COLORZONE-2']
+
 class ProductDesign {
 
     checkPageContent()
@@ -46,7 +46,7 @@ class ProductDesign {
         cy.xpath('//*[@id="tabs-6--tabpanel-3"]/div/div[1]/p').should('have.text','Add a color')
     }
 
-    verifyColorzoneOptions()
+    verifyColorzoneOptions(colorOptions)
     {
         var concatedOptions ='Select option'
         for (var i = 0; i < colorOptions.length; i++) {
@@ -54,7 +54,34 @@ class ProductDesign {
         }
         cy.get('[data-cy=studio-color-fill-selector]')
         .should('have.text',concatedOptions)
+    }
 
+    selectColorOption(option)
+    {
+        cy.get('[data-cy=studio-color-fill-selector]').select(option)
+    }
+
+    changeColorOption(color)
+    {
+        cy.get(color).click()
+    }
+
+    clickIndexThreeDone()
+    {
+        cy.get('[data-cy=studio-Done-button]').click()
+    }
+
+
+    itemRotate()
+    {
+        cy.get('#THREEJS')
+        .trigger('mousedown', { which: 1, pageX: 200, pageY: 300 })
+        .trigger('mousemove', { which: 1, pageX: 600, pageY: 1000 })
+        .trigger('mouseup')
+    }
+
+    clickEditImage(){
+        cy.get('[data-index=4]').click()
     }
 }
 
