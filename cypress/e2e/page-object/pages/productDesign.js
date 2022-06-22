@@ -98,13 +98,13 @@ class ProductDesign {
         cy.get('[data-cy=modal-upload-button]').click()
     }
 
-    // checkImageUpload()
-    // {   
-    //     // Check if the imag has been uploaded or not
-    //     // was trying to check the name as well but system changes the files name so upted for the child element
-    //     // cy.xpath('//*[@id="accordion-panel-248"]/div/div[1]/div/img').should('be.visible')
-    //     cy.xpath('//*[@id="accordion-panel-128"]/div/div[1]/div').children('img').should('be.visible')
-    // }
+    checkImageUpload()
+    {   
+        // Check if the imag has been uploaded or not
+        // was trying to check the name as well but system changes the files name so upted for the child element
+        // cy.xpath('//*[@id="accordion-panel-248"]/div/div[1]/div/img').should('be.visible')
+        cy.xpath('//*[@id="accordion-panel-128"]/div/div[1]/div').children('img').should('be.visible')
+    }
 
     clickPlaceImage(){
         cy.xpath('//*[@id="accordion-panel-128"]/div/div[2]').first().should('have.text','Place Image').click()
