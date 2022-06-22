@@ -1,7 +1,5 @@
-
-
 require('cypress-xpath')
-
+require('cypress-file-upload')
 const pageIdentification = '[data-cy=product-name]'
 
 class ProductDesign {
@@ -82,6 +80,64 @@ class ProductDesign {
 
     clickEditImage(){
         cy.get('[data-index=4]').click()
+    }
+
+    uploadImage()
+    {        
+        cy.get('[data-cy=file-dropzone-input]').attachFile('/images/darthvader.jpg')
+        // cy.wait(200)
+        // cy.get('//*[@id="tabs-6--tabpanel-4"]/div/div[3]/div[1]/div/div/div/div/button').click()
+    }
+
+    verifyUploadPage()
+    {
+        cy.get('#chakra-modal--header-246').click()
+    }
+    clickUpload()
+    {
+        cy.get('[data-cy=modal-upload-button]').click()
+    }
+
+    checkImageUpload()
+    {   
+        // Check if the imag has been uploaded or not
+        // was trying to check the name as well but system changes the files name so upted for the child element
+        // cy.xpath('//*[@id="accordion-panel-248"]/div/div[1]/div/img').should('be.visible')
+        cy.xpath('//*[@id="accordion-panel-128"]/div/div[1]/div').children('img').should('be.visible')
+    }
+
+    clickPlaceImage(){
+        cy.xpath('//*[@id="accordion-panel-128"]/div/div[2]').first().should('have.text','Place Image').click()
+    }
+
+    clickOnCanvas()
+    {
+        cy.xpath('//*[@id="THREEJS"]/canvas').click()
+    }
+
+    clickOnPlacedImage()
+    {
+        cy.xpath('//*[@id="tabs-6--tabpanel-4"]/div/div[3]/div[2]/div[3]').click()
+    }
+
+    clickOnEditButton()
+    {
+        cy.get('[data-cy=studio-image-dropzone-edit-placedimage-button]').should('have.text','Edit').click()
+    }
+
+    clickOnFlipHorizontal()
+    {
+        cy.xpath('//*[@id="tabs-6--tabpanel-4"]/div/div[1]/div[2]/div/button[4]').click()
+    }
+
+    clickOnBackEdit()
+    {
+        cy.xpath('//*[@id="tabs-6--tabpanel-4"]/div/button').click()
+    }
+
+    clickOnImageDone()
+    {
+        cy.get('[data-cy=studio-Done-button]').click()
     }
 }
 

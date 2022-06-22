@@ -5,6 +5,7 @@ import ProductDesign from '../page-object/pages/productDesign'
 describe('Design a Cup', () => {
     beforeEach(() => {
       cy.log('Start of new test case')
+      cy.viewport(1600, 950)
     })
     const productSelection = new ProductSelection();
     const productDesign = new ProductDesign()
@@ -15,7 +16,7 @@ describe('Design a Cup', () => {
 
     it('Visit the Product Details Page', () => {
         cy.visit('https://store.briklshop.com/en/coffee%20mug');
-        cy.viewport(1600, 914)
+        
 
         productSelection.checkIfProcuctSelection()
         productSelection.verifyProductDetails(product)
@@ -45,7 +46,19 @@ describe('Design a Cup', () => {
 
 
     it('Adds Image to product', () => {
+        productDesign.clickEditImage()
+        productDesign.uploadImage()
+        // productDesign.verifyUploadPage()
+        productDesign.clickUpload()
+        productDesign.checkImageUpload()
+        productDesign.clickPlaceImage()
+        productDesign.clickOnCanvas()
+        productDesign.clickOnPlacedImage()
+        productDesign.clickOnEditButton()
+        productDesign.clickOnFlipHorizontal()
  
+        productDesign.clickOnBackEdit() 
+        productDesign.clickOnImageDone()
     })
 
 });
