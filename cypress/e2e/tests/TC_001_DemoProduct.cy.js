@@ -49,6 +49,7 @@ describe('Design a Cup', () => {
         productDesign.clickEditImage()
         productDesign.uploadImage()
         // productDesign.verifyUploadPage()
+        cy.wait(1000)
         productDesign.clickUpload()
         productDesign.checkImageUpload()
         productDesign.clickPlaceImage()
