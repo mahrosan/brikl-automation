@@ -59,9 +59,15 @@ describe('Salut Partner Test Scenarios', () => {
         var price = edges[i].node.price.basePrice.amount.toFixed(2)
         
         var currency = store.getCurrency(edges[i].node.price.basePrice.currencyCode)
+        
         // Checks each of the products details
         store.checkProductItemDetail(i,currency,price,edges)
-        
+
+        cy.log("It should add the product to cart")
+        cy.get('[data-test-id=product-card-button]').eq(i).click()
+        cy.wait(3000)
+        cy.get('[data-cy=product-name]',{timeout:10000}).should('have.text',data.product[i])
+        cy.go('back')
         
       }
     })

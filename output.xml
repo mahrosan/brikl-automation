@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.4 on darwin)" generated="20220623 17:32:49.466" rpa="false" schemaversion="3">
+<suite id="s1" name="Brikl-Test-Automation" source="/Users/rosan/Documents/Workspace/brikl-test-automation">
+<suite id="s1-s1" name="Robot" source="/Users/rosan/Documents/Workspace/brikl-test-automation/robot">
+<suite id="s1-s1-s1" name="Tests" source="/Users/rosan/Documents/Workspace/brikl-test-automation/robot/tests">
+<suite id="s1-s1-s1-s1" name="TC 001 ProductApi" source="/Users/rosan/Documents/Workspace/brikl-test-automation/robot/tests/TC_001_ProductApi.robot">
+<test id="s1-s1-s1-s1-t1" name="When Credential is Correct" line="51">
+<kw name="Execute Test">
+<arg>maze.tukker@ifyourock.com</arg>
+<arg>12345678</arg>
+<arg>200</arg>
+<arg>User authenticated Successfully.</arg>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>StoreInternalAPI</arg>
+<arg>${base_URL}</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220623 17:32:49.520" level="INFO">Creating Session using : alias=StoreInternalAPI, url=https://internal-api.brikl.com/graphql, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20220623 17:32:49.520" endtime="20220623 17:32:49.520"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${slugs}</var>
+<arg>slug=salut-partners</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220623 17:32:49.521" level="INFO">${slugs} = {'slug': 'salut-partners'}</msg>
+<status status="PASS" starttime="20220623 17:32:49.520" endtime="20220623 17:32:49.521"/>
+</kw>
+<kw name="${query} = 'query getTeamStoreBySlugSF($slug: String!) {">
+<arg>teamStoreBySlug(slug: $slug) { id homepageUrl title headlineTitle introductionText logo mainBanner mainBannerHeight brandColor contactEmail contactPerson contactPhone hasPassword hasOutOfStock slug slugLocalizations { langCode content __typename } currentStoreOpeningCycle { id status ordersFrom ordersUntil __typename } storeFront { id title logo favicon domainUrl selectedShopThemeId selectedShopThemeRevisionNo __typename } products(first: 200) { edges { node { ...productList __typename } __typename } __typename } collections(first: 20) { edges { node { id slug title description thumbnailUrl headingBannerUrl slugLocalizations { content langCode __typename } __typename } __typename } __typename } productPackages(first: 100) { edges { node { id type salesChannelId price { salesPrice { amount __typename } basePrice { amount __typename } discountedPrice { amount __typename } __typename } title description media { type source default visibleInCollection productOptionValueId __typename } requestQuotationEnabled createdAt thumbnailUrl attributes { ...attributeDetail __typename } __typename } __typename } __typename } targetCategories { id title __typename } groups { id title __typename } __typename</arg>
+<arg>}}fragment productList on Product {</arg>
+<arg>id</arg>
+<arg>type</arg>
+<arg>slug</arg>
+<arg>title</arg>
+<arg>status</arg>
+<arg>createdAt</arg>
+<arg>thumbnailUrl</arg>
+<arg>description</arg>
+<arg>slugLocalizations { langCode content __typename</arg>
+<arg>}</arg>
+<arg>price { ...productPriceDetailsNB __typename</arg>
+<arg>}</arg>
+<arg>media { ...productMediaDetail __typename</arg>
+<arg>}</arg>
+<arg>attributes { ...attributeDetail __typename</arg>
+<arg>}</arg>
+<arg>__typename}fragment productPriceDetailsNB on ProductPrice {</arg>
+<arg>basePrice { ...priceDetailsNB __typename</arg>
+<arg>}</arg>
+<arg>salesPrice { ...priceDetailsNB __typename</arg>
+<arg>}</arg>
+<arg>discountedPrice { ...priceDetailsNB __typename</arg>
+<arg>}</arg>
+<arg>__typename}fragment priceDetailsNB on Price {</arg>
+<arg>currencyCode</arg>
+<arg>amount</arg>
+<arg>__typename}fragment productMediaDetail on ProductMedia {</arg>
+<arg>type</arg>
+<arg>source</arg>
+<arg>default</arg>
+<arg>visibleInCollection</arg>
+<arg>productOptionValueId</arg>
+<arg>__typename}fragment attributeDetail on ProductAttribute {</arg>
+<arg>id</arg>
+<arg>title</arg>
+<arg>titleSpotlight</arg>
+<arg>iconSpotlight</arg>
+<arg>iconUrl</arg>
+<arg>iconCssClass</arg>
+<arg>__typename}'</arg>
+<msg timestamp="20220623 17:32:49.521" level="FAIL">No keyword with name '${query} = 'query getTeamStoreBySlugSF($slug: String!) {' found.</msg>
+<status status="FAIL" starttime="20220623 17:32:49.521" endtime="20220623 17:32:49.521"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>operationName=getTeamStoreBySlugSF</arg>
+<arg>variables=${slugs}</arg>
+<arg>query=${query}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" starttime="20220623 17:32:49.522" endtime="20220623 17:32:49.522"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>authority=internal-api.brikl.com</arg>
+<arg>authorization=630d0cbc-a125-4537-9258-ca830009765a-GUESTORG-hc4mZ8gHv</arg>
+<arg>x-brikl-currency=USD</arg>
+<arg>x-brikl-language=en_US</arg>
+<arg>x-brikl-shop-id=630d0cbc-a125-4537-9258-ca830009765a</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="NOT RUN" starttime="20220623 17:32:49.522" endtime="20220623 17:32:49.522"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220623 17:32:49.522" endtime="20220623 17:32:49.522"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${body}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220623 17:32:49.522" endtime="20220623 17:32:49.522"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>StoreInternalAPI</arg>
+<arg>${admin_login_API}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="NOT RUN" starttime="20220623 17:32:49.522" endtime="20220623 17:32:49.522"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${actual_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" starttime="20220623 17:32:49.522" endtime="20220623 17:32:49.522"/>
+</kw>
+<kw name="Convert String To JSON" library="JSONLibrary">
+<var>${json_str}</var>
+<arg>${response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="NOT RUN" starttime="20220623 17:32:49.522" endtime="20220623 17:32:49.522"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${json_str}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220623 17:32:49.522" endtime="20220623 17:32:49.522"/>
+</kw>
+<status status="FAIL" starttime="20220623 17:32:49.520" endtime="20220623 17:32:49.522"/>
+</kw>
+<status status="FAIL" starttime="20220623 17:32:49.519" endtime="20220623 17:32:49.522">No keyword with name '${query} = 'query getTeamStoreBySlugSF($slug: String!) {' found.</status>
+</test>
+<status status="FAIL" starttime="20220623 17:32:49.476" endtime="20220623 17:32:49.523"/>
+</suite>
+<status status="FAIL" starttime="20220623 17:32:49.476" endtime="20220623 17:32:49.523"/>
+</suite>
+<status status="FAIL" starttime="20220623 17:32:49.475" endtime="20220623 17:32:49.523"/>
+</suite>
+<status status="FAIL" starttime="20220623 17:32:49.469" endtime="20220623 17:32:49.524"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Brikl-Test-Automation">Brikl-Test-Automation</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="Robot">Brikl-Test-Automation.Robot</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1" name="Tests">Brikl-Test-Automation.Robot.Tests</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1-s1" name="TC 001 ProductApi">Brikl-Test-Automation.Robot.Tests.TC 001 ProductApi</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

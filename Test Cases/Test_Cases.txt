@@ -1,0 +1,40 @@
+Test Scenario One:    Store Page should load and have its store details
+
+Base URL: https://store.briklshop.com/en/store
+Store URL: /salut-partners
+
+    Test Case 1 : Store details should be visible
+
+        Title:              Store title should be visible
+                            Should have a bold text and be a header
+        Description:        Should be in regular font size.
+                            Should no overflow when the window is resized
+        Contact Details:    Contact headers should be in bold
+                            Contact details should be on regular font
+
+
+
+
+    Test Case 2 : Product details should be visible and loaded properly
+        Product Image:      Product image should be properly loaded to its respective div
+                            If multiple of product is received from the API, then it should have a functionality to scroll though the products
+                            Image should be compressed before loaded to the UI
+                            Image load should not take more than a benchmarked time duration
+                            Each of the image should be of same dimension when loaded in the section
+
+        Product Name:       Product name should be loaded respectively with the products image  
+                            Should be on default font and size
+                            Longer product name should not overflow out of the design
+
+        Product Price:      product price should be shown according to the selected currency
+                            Amount should have fixed decimal digit of 2
+                            Curreny type and amount should have proper spacing
+                
+        Buy Now:            Buy now button should get the Id of the product when clicked on
+                            When redirected to the product detail page, it should redirect the user to the same product Id
+                            Make sure the Id of product is being used
+
+
+                            
+        
+    Test Case 3 : Internal API should only have all the needed data. It should not containt any un-necessary data which can adversly affect in the performance of the API
