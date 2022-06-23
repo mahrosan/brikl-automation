@@ -1,0 +1,11 @@
+{
+    "Product": {
+      "product": "Coffee Mug"
+    },
+    "Color": {
+      "color": {
+        "red": "[data-cy=color-index-15]",
+        "orange": "[data-cy=color-index-17]"
+      }
+    }
+  }
