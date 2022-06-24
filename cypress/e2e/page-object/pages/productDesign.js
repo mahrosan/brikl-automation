@@ -60,7 +60,7 @@ class ProductDesign {
         cy.get('[data-cy=studio-Done-button]').click()
     }
 
-
+    // Tried to rotate the image in the canvas, Could not look further into this due to time constraint
     itemRotate() {
         cy.get('#THREEJS')
             .trigger('mousedown', { which: 1, pageX: 200, pageY: 300 })
@@ -73,9 +73,9 @@ class ProductDesign {
     }
 
     uploadImage() {
+        // we could make small change on it and make it as a utils class if the image name and the locator can be passed as a parameter
+        // The reason I didn't kept it in the utils is because I just had to use it once
         cy.get('[data-cy=file-dropzone-input]').attachFile('/images/darthvader.jpg')
-        // cy.wait(200)
-        // cy.get('//*[@id="tabs-6--tabpanel-4"]/div/div[3]/div[1]/div/div/div/div/button').click()
     }
 
     verifyUploadPage() {

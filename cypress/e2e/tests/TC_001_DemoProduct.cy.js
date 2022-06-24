@@ -1,4 +1,3 @@
-require('cypress-xpath')
 import ProductSelection from '../page-object/pages/productSelection'
 import ProductDesign from '../page-object/pages/productDesign'
 const data = require('../../fixtures/data.json')
@@ -12,9 +11,7 @@ describe('Design a Cup', () => {
     const productDesign = new ProductDesign()
 
     const colorOptions = ['COLORZONE-1', 'COLORZONE-2']
-    // const color = {'red':'[data-cy=color-index-15]','orange':'[data-cy=color-index-17]'}
     const color = data.Color.color
-    // var product = 'Coffee Mug'
     var product = data.Product.product
 
     it('Should visit the Product Details Page', () => {

@@ -7,12 +7,6 @@ class Store {
         cy.xpath('//*[@id="__next"]/div/div').should('have.text','Loading...Loading the design assets. Please wait...Powered by')
     }
 
-    getCurrency(currencyCode)
-    {
-        if (currencyCode == 'USD'){
-          return 'US$'
-        }
-    }
 
     checkProductItemDetail(i,currency,price,edges)
     {
@@ -26,6 +20,26 @@ class Store {
         // checks if the Prices are according to the API response or not
         cy.get('[data-cy=product-sale-price-on-card').eq(i).should('have.text',currency+' '+price)
 
+    }
+
+    verifyStoreLandingPage(contactPersonName,email,phoneNo)
+    {
+        cy.get('[data-cy=teamstore-title]',{timeout:10000})
+        .should('have.text', 'Salut X Partners');
+        cy.xpath('//*[@id="gatsby-focus-wrapper"]/div/div/div/div/main/div/div[2]/div[1]/div/div/h2')
+        .should('have.text', 'Welcome!')
+        cy.xpath('//*[@id="gatsby-focus-wrapper"]/div/div/div/div/main/div/div[2]/div[1]/div/div')
+        .should('have.text', 'Welcome!Why buy off the rack when you can make a piece uniquely yours?Customization allows you to tailor clothing according to your body type and personality.So, forget fast fashion. Stand out from the crowd in custom clothing.')
+        cy.get('[data-cy=teamstore-contact')
+        .should('have.text', 'Contact person:  Mr. ' + contactPersonName + 'Email: ' + email + 'Phone: ' + phoneNo)
+    }
+
+    checkProductLandingPage(productName,index)
+    {
+        cy.get('[data-test-id=product-card-button]').eq(index).click()
+        cy.wait(3000)
+        cy.get('[data-cy=product-name]',{timeout:10000}).should('have.text',productName)
+        cy.go('back')
     }
 }
 export default Store
