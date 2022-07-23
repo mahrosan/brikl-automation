@@ -16,9 +16,18 @@ describe('Salut Partner Test Scenarios', () => {
 
 
   it('Visit Salut Partner Page', () => {
+
+    // cy.intercept('GET', '/page-data/app-data.json').as('getCards')
+    // cy.intercept('POST', 'https://internal-api.brikl.com/graphql/storefront/internal').as('internalData')
+
     cy.visit('https://store.briklshop.com/en/store/salut-partners');
     store.verifyStoreLandingPage(contactPersonName,email,phoneNo)
+
+
+    
   })
+
+
 
 
 
